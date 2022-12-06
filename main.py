@@ -18,11 +18,11 @@ instruction_sets = []
 
 for instruction in instructions:
 
-    # Initialise a variable to store each boundary of the ranges
+    # Initialise a variable to store each part of the instructions
 
     section = ""
 
-    # Initialise lists for the boundaries of each range
+    # Initialise lists for the parts of each instruction
 
     instruction_set = []
 
@@ -30,7 +30,7 @@ for instruction in instructions:
 
     for char in instruction:
 
-        # Add each boundary to the range and then to the list of ranges
+        # Add each part to the instruction and then to the list of instructions
 
         try:
             int(char)
@@ -60,12 +60,16 @@ print()
 
 stacks = []
 
+# Reset Lists
+
 contents = [["P", "F", "M", "Q", "W", "G", "R", "T"], ["H", "F", "R"], ["P", "Z", "R", "V", "G", "H", "S", "D"],
             ["Q", "H", "P", "B", "F", "W", "G"], ["P", "S", "M", "J", "H"], ["M", "Z", "T", "H", "S", "R", "P", "L"],
             ["P", "T", "H", "N", "M", "L"], ["F", "D", "Q", "R"], ["D", "S", "C", "N", "L", "P", "H"]]
 
 for i in range(9):
     stacks.append(contents[i])
+
+# Move the boxes
 
 for instruction in instruction_sets:
     stacks[int(instruction[2]) - 1].extend(stacks[int(instruction[1]) - 1][-int(instruction[0]):])
